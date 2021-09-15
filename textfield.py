@@ -20,11 +20,11 @@ class TextField():
 
     def draw(self, surface):
         if self.focused:
-            pygame.draw.rect(surface, (0, 255, 0), (self.x, self.y, self.width, self.height), 1)
+            pygame.draw.rect(surface, (0, 255, 0), (self.x - 2, self.y - 2, self.width + 4, self.height + 4), 1)
         else:
-            pygame.draw.rect(surface, (255, 255, 255), (self.x, self.y, self.width, self.height), 1)
+            pygame.draw.rect(surface, (255, 255, 255), (self.x - 2, self.y - 2, self.width + 4, self.height + 4), 1)
 
-        surface.blit(self.renderedText, (self.x + 5, self.y + 5))
+        surface.blit(self.renderedText, (self.x, self.y))
 
     def update(self, events):
         self.checkFocused(events)

@@ -1,5 +1,6 @@
 import pygame
 import textfield
+import textlabel
 
 pygame.init()
 pygame.font.init()
@@ -13,8 +14,8 @@ class CharacterSheet():
         self.clock = pygame.time.Clock()
         self.events = pygame.event.get()
 
-        self.text = textfield.TextField(25, 25, 500, 50, "Text_1")
-        self.text2 = textfield.TextField(25, 100, 100, 50, "Text_2")
+        self.label = textlabel.TextLabel(25, 25, "Character Name", "cname_label")
+        self.text = textfield.TextField(150, 25, 150, 20, "cname_text")
 
     def start(self):
         while self.running:
@@ -31,12 +32,11 @@ class CharacterSheet():
     def draw(self):
         self.screen.fill((0, 0, 0))
 
+        self.label.draw(self.screen)
         self.text.draw(self.screen)
-        self.text2.draw(self.screen)
 
     def update(self):
         self.text.update(self.events)
-        self.text2.update(self.events)
 
         pygame.display.update()
         self.clock.tick(30)
