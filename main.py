@@ -1,5 +1,5 @@
 import pygame
-import text
+import textfield
 
 pygame.init()
 pygame.font.init()
@@ -13,8 +13,8 @@ class CharacterSheet():
         self.clock = pygame.time.Clock()
         self.events = pygame.event.get()
 
-        self.text = text.Field(25, 25, 100, 50)
-        self.text2 = text.Field(25, 100, 100, 50)
+        self.text = textfield.TextField(25, 25, 500, 50, "Text_1")
+        self.text2 = textfield.TextField(25, 100, 100, 50, "Text_2")
 
     def start(self):
         while self.running:

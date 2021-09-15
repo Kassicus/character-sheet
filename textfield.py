@@ -1,6 +1,6 @@
 import pygame
 
-class Field():
+class TextField():
     def __init__(self, x, y, width, height, name):
         self.x = x
         self.y = y
@@ -12,7 +12,7 @@ class Field():
 
         self.focused = False
 
-        self.font = pygame.font.Font('assets/fonts/ubuntu/Ubuntu-Regular.ttf', 18)
+        self.font = pygame.font.Font('assets/fonts/ubuntu/Ubuntu-Regular.ttf', 16)
 
         self.text = ""
 
@@ -24,7 +24,7 @@ class Field():
         else:
             pygame.draw.rect(surface, (255, 255, 255), (self.x, self.y, self.width, self.height), 1)
 
-        surface.blit(self.renderedText, (self.x + 10, self.y + 10))
+        surface.blit(self.renderedText, (self.x + 5, self.y + 5))
 
     def update(self, events):
         self.checkFocused(events)
