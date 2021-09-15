@@ -1,6 +1,7 @@
 import pygame
 import textfield
 import textlabel
+import checkbox
 
 pygame.init()
 pygame.font.init()
@@ -16,6 +17,8 @@ class CharacterSheet():
 
         self.label = textlabel.TextLabel(25, 25, "Character Name", "cname_label")
         self.text = textfield.TextField(150, 25, 150, 20, "cname_text")
+
+        self.checkbox = checkbox.CheckBox(100, 100)
 
     def start(self):
         while self.running:
@@ -35,8 +38,12 @@ class CharacterSheet():
         self.label.draw(self.screen)
         self.text.draw(self.screen)
 
+        self.checkbox.draw(self.screen)
+
     def update(self):
         self.text.update(self.events)
+
+        self.checkbox.update(self.events)
 
         pygame.display.update()
         self.clock.tick(30)

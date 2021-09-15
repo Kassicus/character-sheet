@@ -1,7 +1,7 @@
 import pygame
 
 class TextField():
-    def __init__(self, x, y, width, height, name):
+    def __init__(self, x, y, width, height, name, fontSize = 16):
         self.x = x
         self.y = y
 
@@ -12,7 +12,7 @@ class TextField():
 
         self.focused = False
 
-        self.font = pygame.font.Font('assets/fonts/ubuntu/Ubuntu-Regular.ttf', 16)
+        self.font = pygame.font.Font('assets/fonts/ubuntu/Ubuntu-Regular.ttf', fontSize)
 
         self.text = ""
 
