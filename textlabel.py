@@ -20,3 +20,6 @@ class TextLabel():
 
     def draw(self, surface):
         surface.blit(self.text, (self.x, self.y))
+
+    def getWidth(self):
+        return self.text.get_width()

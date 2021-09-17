@@ -18,6 +18,10 @@ class CharacterSheet():
         self.events = pygame.event.get()
 
         self.characterNameLabel = textlabel.TextLabel(10, 10, "Character Name", "character_name_label")
+        self.characterNameField = textfield.TextField(int(20 + self.characterNameLabel.getWidth()), 10, 120, 15, "character_name_field", "line")
+
+        self.classAndLevelLabel = textlabel.TextLabel(10, 35, "Class & Level", "class_and_level_label")
+        self.classAndLevelField = textfield.TextField(int(20 + self.classAndLevelLabel.getWidth()), 35, 120, 15, "class_and_level_field", "line")
 
     def start(self):
         while self.running:
@@ -34,13 +38,19 @@ class CharacterSheet():
     def draw(self):
         self.screen.fill((0, 0, 0))
 
-        """ Draw everything below this """
+        # Draw everything below this
 
         self.characterNameLabel.draw(self.screen)
+        self.characterNameField.draw(self.screen)
+
+        self.classAndLevelLabel.draw(self.screen)
+        self.classAndLevelField.draw(self.screen)
 
     def update(self):
+        self.characterNameField.update(self.events)
+        self.classAndLevelField.update(self.events)
 
-        """ Update everthing above this """
+        # Update everthing above this
 
         pygame.display.update()
         self.clock.tick(30)
