@@ -17,6 +17,8 @@ class CharacterSheet():
         self.clock = pygame.time.Clock()
         self.events = pygame.event.get()
 
+        self.characterNameLabel = textlabel.TextLabel(10, 10, "Character Name", "character_name_label")
+
     def start(self):
         while self.running:
             self.events = pygame.event.get()
@@ -32,7 +34,14 @@ class CharacterSheet():
     def draw(self):
         self.screen.fill((0, 0, 0))
 
+        """ Draw everything below this """
+
+        self.characterNameLabel.draw(self.screen)
+
     def update(self):
+
+        """ Update everthing above this """
+
         pygame.display.update()
         self.clock.tick(30)
 

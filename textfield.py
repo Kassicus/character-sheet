@@ -2,6 +2,11 @@ import pygame
 
 class TextField():
     def __init__(self, x, y, width, height, name, fontSize = 16):
+        """
+        The textfield draws an interactible text window on the screen for text to be input to.
+        name: the name of the textfield, used for saving textfield data.
+        fontSize: (default 16) the size of the font used inside of the text field.
+        """
         self.x = x
         self.y = y
 

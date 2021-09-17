@@ -1,12 +1,18 @@
 import pygame
 
 class CheckBox():
-    def __init__(self, x, y):
+    def __init__(self, x, y, name):
+        """
+        The checkbox class draws an interactable checkbox on screen.
+        name: the actual name of the checkbox, used for saving checkbox data.
+        """
         self.x = x
         self.y = y
 
         self.width = 20
         self.height = 20
+
+        self.name = name
 
         self.checked = False
 

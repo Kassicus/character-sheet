@@ -1,12 +1,19 @@
 import pygame
 
 class Button():
-    def __init__(self, x, y, width, height, color, function):
+    def __init__(self, x, y, width, height, color, function, name):
+        """
+        The button class draws a interactable button on screen.
+        function: a function of the parent of the button, called when the button is clicked.
+        name: the actual name of the button, used for saving button data
+        """
         self.x = x
         self.y = y
 
         self.width = width
         self.height = height
+
+        self.name = name
 
         self.color = color
 
