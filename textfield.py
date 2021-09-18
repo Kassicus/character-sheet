@@ -2,7 +2,7 @@ import pygame
 import pickle
 
 class TextField():
-    def __init__(self, x, y, width, height, name, drawType = "box", fontSize = 16):
+    def __init__(self, x, y, width, height, name, drawType = "box", fontSize = 16, alignment = "left"):
         """
         The textfield draws an interactible text window on the screen for text to be input to.
         name: the name of the textfield, used for saving textfield data.
@@ -35,6 +35,8 @@ class TextField():
 
         self.drawType = drawType
 
+        self.alignment = alignment
+
     def draw(self, surface):
         if self.focused:
             if self.drawType == "box":
@@ -47,7 +49,10 @@ class TextField():
             elif self.drawType == "line":
                 pygame.draw.line(surface, (255, 255, 255), (self.realx, self.y + self.realheight), (self.x + self.realwidth, self.y + self.realheight))
 
-        surface.blit(self.renderedText, (self.x, self.y))
+        if self.alignment == "centered":
+            surface.blit(self.renderedText, (int(self.x + (self.width / 2) - (self.renderedText.get_width() / 2)), self.y))
+        elif self.alignment == "left":
+            surface.blit(self.renderedText, (self.x, self.y))
 
     def update(self, events):
         self.checkFocused(events)

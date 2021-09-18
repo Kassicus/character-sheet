@@ -29,6 +29,16 @@ class CharacterSheet():
         self.backgroundLabel = textlabel.TextLabel(10, 85, "Background")
         self.backgroundField = textfield.TextField(int(20 + self.backgroundLabel.getWidth()), 85, 120, 15, "character_background_field", "line")
 
+        self.alignmentLabel = textlabel.TextLabel(10, 110, "Alignment")
+        self.alignmentField = textfield.TextField(int(20 + self.alignmentLabel.getWidth()), 110, 120, 15, "alignment_field", "line")
+
+        self.experiencePointsLabel = textlabel.TextLabel(10, 135, "Experience Points")
+        self.experiencePointsField = textfield.TextField(int(20 + self.experiencePointsLabel.getWidth()), 135, 120, 15, "experience_points_field", "line")
+
+        self.strengthScoreLabel = textlabel.TextLabel(350, 10, "Strength")
+        self.strengthScoreField = textfield.TextField(int(self.strengthScoreLabel.x + (self.strengthScoreLabel.getWidth()/2) - 30 ), 
+        35, 60, 60, "strength_score_field", fontSize = 48, alignment = "centered")
+
     def start(self):
         self.load()
 
@@ -61,11 +71,23 @@ class CharacterSheet():
         self.backgroundLabel.draw(self.screen)
         self.backgroundField.draw(self.screen)
 
+        self.alignmentLabel.draw(self.screen)
+        self.alignmentField.draw(self.screen)
+
+        self.experiencePointsLabel.draw(self.screen)
+        self.experiencePointsField.draw(self.screen)
+
+        self.strengthScoreLabel.draw(self.screen)
+        self.strengthScoreField.draw(self.screen)
+
     def update(self):
         self.characterNameField.update(self.events)
         self.classAndLevelField.update(self.events)
         self.raceField.update(self.events)
         self.backgroundField.update(self.events)
+        self.alignmentField.update(self.events)
+        self.experiencePointsField.update(self.events)
+        self.strengthScoreField.update(self.events)
 
         # Update everthing above this
 
@@ -77,12 +99,18 @@ class CharacterSheet():
         self.classAndLevelField.save()
         self.raceField.save()
         self.backgroundField.save()
+        self.alignmentField.save()
+        self.experiencePointsField.save()
+        self.strengthScoreField.save()
 
     def load(self):
         self.characterNameField.load()
         self.classAndLevelField.load()
         self.raceField.load()
         self.backgroundField.load()
+        self.alignmentField.load()
+        self.experiencePointsField.load()
+        self.strengthScoreField.load()
 
 cs = CharacterSheet()
 
