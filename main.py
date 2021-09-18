@@ -36,8 +36,16 @@ class CharacterSheet():
         self.experiencePointsField = textfield.TextField(int(20 + self.experiencePointsLabel.getWidth()), 135, 120, 15, "experience_points_field", "line")
 
         self.strengthScoreLabel = textlabel.TextLabel(350, 10, "Strength")
-        self.strengthScoreField = textfield.TextField(int(self.strengthScoreLabel.x + (self.strengthScoreLabel.getWidth()/2) - 30 ), 
+        self.strengthScoreField = textfield.TextField(int(self.strengthScoreLabel.x + (self.strengthScoreLabel.getWidth() / 2) - 30 ),
         35, 60, 60, "strength_score_field", fontSize = 48, alignment = "centered")
+        self.strengthModifierField = textfield.TextField(int(self.strengthScoreLabel.x + (self.strengthScoreLabel.getWidth() / 2) - 30),
+        100, 60, 15, "strength_modifier_field", alignment = "centered")
+
+        self.dexterityScoreLabel = textlabel.TextLabel(425, 10, "Dexterity")
+        self.dexterityScoreField = textfield.TextField(int(self.dexterityScoreLabel.x + (self.dexterityScoreLabel.getWidth() / 2) - 30 ), 
+        35, 60, 60, "dexterity_score_field", fontSize = 48, alignment = "centered")
+        self.dexterityModifierField = textfield.TextField(int(self.dexterityScoreLabel.x + (self.dexterityScoreLabel.getWidth() / 2) - 30),
+        100, 60, 15, "dexterity_modifier_field", alignment = "centered")
 
     def start(self):
         self.load()
@@ -58,7 +66,6 @@ class CharacterSheet():
         self.screen.fill((0, 0, 0))
 
         # Draw everything below this
-
         self.characterNameLabel.draw(self.screen)
         self.characterNameField.draw(self.screen)
 
@@ -79,6 +86,12 @@ class CharacterSheet():
 
         self.strengthScoreLabel.draw(self.screen)
         self.strengthScoreField.draw(self.screen)
+        self.strengthModifierField.draw(self.screen)
+
+        self.dexterityScoreLabel.draw(self.screen)
+        self.dexterityScoreField.draw(self.screen)
+        self.dexterityModifierField.draw(self.screen)
+
 
     def update(self):
         self.characterNameField.update(self.events)
@@ -88,9 +101,11 @@ class CharacterSheet():
         self.alignmentField.update(self.events)
         self.experiencePointsField.update(self.events)
         self.strengthScoreField.update(self.events)
+        self.strengthModifierField.update(self.events)
+        self.dexterityScoreField.update(self.events)
+        self.dexterityModifierField.update(self.events)
 
         # Update everthing above this
-
         pygame.display.update()
         self.clock.tick(30)
 
@@ -102,6 +117,9 @@ class CharacterSheet():
         self.alignmentField.save()
         self.experiencePointsField.save()
         self.strengthScoreField.save()
+        self.strengthModifierField.save()
+        self.dexterityScoreField.save()
+        self.dexterityModifierField.save()
 
     def load(self):
         self.characterNameField.load()
@@ -111,6 +129,9 @@ class CharacterSheet():
         self.alignmentField.load()
         self.experiencePointsField.load()
         self.strengthScoreField.load()
+        self.strengthModifierField.load()
+        self.dexterityScoreField.load()
+        self.dexterityModifierField.load()
 
 cs = CharacterSheet()
 
