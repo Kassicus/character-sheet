@@ -1,7 +1,6 @@
 import pygame
 import textfield
 import textlabel
-import checkbox
 import infopanel
 import button
 import attrpanel
@@ -48,6 +47,7 @@ class CharacterSheet():
 
         self.strProf = profpanel.ProfPanel(10, 400, "strength")
         self.dexProf = profpanel.ProfPanel(10, 425, "dexterity")
+        self.conProf = profpanel.ProfPanel(10, 450, "constitution")
 
 
         self.test = infopanel.InfoPanel(1198, 591, "assets/data/spells/horrid_wilting.png", "test")
@@ -99,6 +99,7 @@ class CharacterSheet():
 
         self.strProf.draw(self.screen)
         self.dexProf.draw(self.screen)
+        self.conProf.draw(self.screen)
 
         self.testbutton.draw(self.screen)
 
@@ -122,6 +123,7 @@ class CharacterSheet():
 
         self.strProf.update(self.events)
         self.dexProf.update(self.events)
+        self.conProf.update(self.events)
 
         self.testbutton.update(self.events)
 
@@ -151,6 +153,8 @@ class CharacterSheet():
         self.chaAttr.save()
 
         self.strProf.save()
+        self.dexProf.save()
+        self.conProf.save()
 
     def load(self):
         self.characterNameField.load()
@@ -168,6 +172,8 @@ class CharacterSheet():
         self.chaAttr.load()
         
         self.strProf.load()
+        self.dexProf.load()
+        self.conProf.load()
 
 cs = CharacterSheet()
 

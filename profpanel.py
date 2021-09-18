@@ -15,7 +15,7 @@ class ProfPanel():
 
         self.scoreCheckBox = checkbox.CheckBox(self.x, self.y, str(self.profName) + "_checkbox")
 
-        self.scoreField = textfield.TextField(self.x + 30, self.y, 30, 15, str(self.profName + "_proficiency_field"), "line", alignment = "centered")
+        self.scoreField = textfield.TextField(self.x + 30, self.y, 30, 15, str(self.profName + "_proficiency_field").replace(" ", "_"), "line", alignment = "centered")
 
         self.scoreLabel = textlabel.TextLabel(self.x + 40 + self.scoreField.width, self.y, str(self.profName).capitalize())
 
