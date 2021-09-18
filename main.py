@@ -5,6 +5,7 @@ import characterinfo
 import characterattr
 import characterprof
 import characterskill
+import characterhealth
 
 pygame.init()
 pygame.font.init()
@@ -24,9 +25,10 @@ class CharacterSheet():
         self.characterAttributs = characterattr.CharacterAttr()
         self.characterProficiencies = characterprof.CharacterProf()
         self.characterSkills = characterskill.CharacterSkill()
+        self.characterHealth = characterhealth.CharacterHealth()
 
-        self.test = infopanel.InfoPanel(1198, 591, "assets/data/spells/horrid_wilting.png", "test")
-        self.testbutton = button.Button(500, 500, 50, 50, (0, 255, 0), self.test.activate)
+        #self.test = infopanel.InfoPanel(1198, 591, "assets/data/spells/horrid_wilting.png", "test")
+        #self.testbutton = button.Button(500, 500, 50, 50, (0, 255, 0), self.test.activate)
 
     def start(self):
         self.load()
@@ -44,29 +46,31 @@ class CharacterSheet():
             self.update()
 
     def draw(self):
-        self.screen.fill((0, 0, 0))
+        self.screen.fill((34, 32, 52))
 
         # Draw everything below this
         self.characterInformation.draw(self.screen)
         self.characterAttributs.draw(self.screen)
         self.characterProficiencies.draw(self.screen)
         self.characterSkills.draw(self.screen)
+        self.characterHealth.draw(self.screen)
 
-        self.testbutton.draw(self.screen)
+        #self.testbutton.draw(self.screen)
 
         # Draw all popups below this
-        self.test.draw(self.screen)
+        #self.test.draw(self.screen)
 
     def update(self):
         self.characterInformation.update(self.events)
         self.characterAttributs.update(self.events)
         self.characterProficiencies.update(self.events)
         self.characterSkills.update(self.events)
+        self.characterHealth.update(self.events)
 
-        self.testbutton.update(self.events)
+        #self.testbutton.update(self.events)
 
         # Update all popups below this
-        self.test.update(self.events)
+        #self.test.update(self.events)
 
         # Update everthing above this
         if self.debug:
@@ -80,12 +84,14 @@ class CharacterSheet():
         self.characterAttributs.save()
         self.characterProficiencies.save()
         self.characterSkills.save()
+        self.characterHealth.save()
 
     def load(self):
         self.characterInformation.load()
         self.characterAttributs.load()
         self.characterProficiencies.load()
         self.characterSkills.load()
+        self.characterHealth.load()
 
 cs = CharacterSheet()
 

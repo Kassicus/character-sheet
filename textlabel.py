@@ -13,7 +13,7 @@ class TextLabel():
 
         self.font = pygame.font.Font('assets/fonts/ubuntu/Ubuntu-Regular.ttf', 16)
 
-        self.text = self.font.render(self.value, True, (150, 150, 150))
+        self.text = self.font.render(self.value, True, (63, 58, 114))
 
     def draw(self, surface):
         surface.blit(self.text, (self.x, self.y))

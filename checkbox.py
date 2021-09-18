@@ -18,10 +18,10 @@ class CheckBox():
         self.checked = False
 
     def draw(self, surface):
-        pygame.draw.rect(surface, (255, 255, 255), (self.x, self.y, self.width, self.height), 1)
+        pygame.draw.rect(surface, (63, 58, 114), (self.x, self.y, self.width, self.height), 1)
 
         if self.checked:
-            pygame.draw.rect(surface, (255, 255, 255), (self.x + 3, self.y + 3, self.width - 6, self.height - 6), 0)
+            pygame.draw.rect(surface, (150, 140, 235), (self.x + 3, self.y + 3, self.width - 6, self.height - 6), 0)
 
     def update(self, events):
         self.checkFocused(events)

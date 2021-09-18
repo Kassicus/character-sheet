@@ -2,12 +2,12 @@ import attrpanel
 
 class CharacterAttr():
     def __init__(self):
-        self.strAttr = attrpanel.AttrPanel(295, 10, "strength")
-        self.dexAttr = attrpanel.AttrPanel(395, 10, "dexterity")
-        self.conAttr = attrpanel.AttrPanel(495, 10, "constitution")
-        self.intAttr = attrpanel.AttrPanel(595, 10, "intelligence")
-        self.wisAttr = attrpanel.AttrPanel(695, 10, "wisdom")
-        self.chaAttr = attrpanel.AttrPanel(795, 10, "charisma")
+        self.strAttr = attrpanel.AttrPanel(20, 180, "strength")
+        self.dexAttr = attrpanel.AttrPanel(110, 180, "dexterity")
+        self.conAttr = attrpanel.AttrPanel(200, 180, "constitution")
+        self.intAttr = attrpanel.AttrPanel(20, 300, "intelligence")
+        self.wisAttr = attrpanel.AttrPanel(110, 300, "wisdom")
+        self.chaAttr = attrpanel.AttrPanel(200, 300, "charisma")
 
     def draw(self, surface):
         self.strAttr.draw(surface)

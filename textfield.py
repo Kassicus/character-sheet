@@ -31,7 +31,7 @@ class TextField():
 
         self.text = ""
 
-        self.renderedText = self.font.render(self.text, True, (255, 255, 255))
+        self.renderedText = self.font.render(self.text, True, (150, 140, 235))
 
         self.drawType = drawType
 
@@ -40,14 +40,18 @@ class TextField():
     def draw(self, surface):
         if self.focused:
             if self.drawType == "box":
-                pygame.draw.rect(surface, (0, 255, 0), (self.realx, self.realy, self.realwidth, self.realheight), 1)
+                pygame.draw.rect(surface, (81, 255, 154), (self.realx, self.realy, self.realwidth, self.realheight), 1)
             elif self.drawType == "line":
-                pygame.draw.line(surface, (0, 255, 0), (self.realx, self.y + self.realheight), (self.x + self.realwidth, self.y + self.realheight))
+                pygame.draw.line(surface, (81, 255, 154), (self.realx, self.y + self.realheight), (self.x + self.realwidth, self.y + self.realheight))
+            elif self.drawType == "none":
+                pass
         else:
             if self.drawType == "box":
-                pygame.draw.rect(surface, (255, 255, 255), (self.realx, self.realy, self.realwidth, self.realheight), 1)
+                pygame.draw.rect(surface, (63, 58, 114), (self.realx, self.realy, self.realwidth, self.realheight), 1)
             elif self.drawType == "line":
-                pygame.draw.line(surface, (255, 255, 255), (self.realx, self.y + self.realheight), (self.x + self.realwidth, self.y + self.realheight))
+                pygame.draw.line(surface, (63, 58, 114), (self.realx, self.y + self.realheight), (self.x + self.realwidth, self.y + self.realheight))
+            elif self.drawType == "none":
+                pass
 
         if self.alignment == "centered":
             surface.blit(self.renderedText, (int(self.x + (self.width / 2) - (self.renderedText.get_width() / 2)), self.y))
@@ -57,7 +61,7 @@ class TextField():
     def update(self, events):
         self.checkFocused(events)
 
-        self.renderedText = self.font.render(self.text, True, (255, 255, 255))
+        self.renderedText = self.font.render(self.text, True, (150, 140, 235))
 
         if self.focused:
             self.getKeyboardInput(events)
