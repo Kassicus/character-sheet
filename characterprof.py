@@ -2,12 +2,12 @@ import profpanel
 
 class CharacterProf():
     def __init__(self):
-        self.strProf = profpanel.ProfPanel(1000, 300, "strength")
-        self.dexProf = profpanel.ProfPanel(1000, 325, "dexterity")
-        self.conProf = profpanel.ProfPanel(1000, 350, "constitution")
-        self.intProf = profpanel.ProfPanel(1000, 375, "intelligence")
-        self.wisProf = profpanel.ProfPanel(1000, 400, "wisdom")
-        self.chaProf = profpanel.ProfPanel(1000, 425, "charisma")
+        self.strProf = profpanel.ProfPanel(300, 10, "strength")
+        self.dexProf = profpanel.ProfPanel(300, 35, "dexterity")
+        self.conProf = profpanel.ProfPanel(300, 60, "constitution")
+        self.intProf = profpanel.ProfPanel(300, 85, "intelligence")
+        self.wisProf = profpanel.ProfPanel(300, 110, "wisdom")
+        self.chaProf = profpanel.ProfPanel(300, 135, "charisma")
 
     def draw(self, surface):
         self.strProf.draw(surface)
