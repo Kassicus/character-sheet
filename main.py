@@ -4,6 +4,7 @@ import textlabel
 import checkbox
 import infopanel
 import button
+import attrpanel
 
 pygame.init()
 pygame.font.init()
@@ -17,35 +18,35 @@ class CharacterSheet():
         self.clock = pygame.time.Clock()
         self.events = pygame.event.get()
 
+        self.debug = False
+
         self.characterNameLabel = textlabel.TextLabel(10, 10, "Character Name")
-        self.characterNameField = textfield.TextField(int(20 + self.characterNameLabel.getWidth()), 10, 120, 15, "character_name_field", "line")
+        self.characterNameField = textfield.TextField(140, 10, 120, 15, "character_name_field", "line")
 
         self.classAndLevelLabel = textlabel.TextLabel(10, 35, "Class & Level")
-        self.classAndLevelField = textfield.TextField(int(20 + self.classAndLevelLabel.getWidth()), 35, 120, 15, "class_and_level_field", "line")
+        self.classAndLevelField = textfield.TextField(140, 35, 120, 15, "class_and_level_field", "line")
 
         self.raceLabel = textlabel.TextLabel(10, 60, "Race")
-        self.raceField = textfield.TextField(int(20 + self.raceLabel.getWidth()), 60, 120, 15, "character_race_field", "line")
+        self.raceField = textfield.TextField(140, 60, 120, 15, "character_race_field", "line")
 
         self.backgroundLabel = textlabel.TextLabel(10, 85, "Background")
-        self.backgroundField = textfield.TextField(int(20 + self.backgroundLabel.getWidth()), 85, 120, 15, "character_background_field", "line")
+        self.backgroundField = textfield.TextField(140, 85, 120, 15, "character_background_field", "line")
 
         self.alignmentLabel = textlabel.TextLabel(10, 110, "Alignment")
-        self.alignmentField = textfield.TextField(int(20 + self.alignmentLabel.getWidth()), 110, 120, 15, "alignment_field", "line")
+        self.alignmentField = textfield.TextField(140, 110, 120, 15, "alignment_field", "line")
 
-        self.experiencePointsLabel = textlabel.TextLabel(10, 135, "Experience Points")
-        self.experiencePointsField = textfield.TextField(int(20 + self.experiencePointsLabel.getWidth()), 135, 120, 15, "experience_points_field", "line")
+        self.experiencePointsLabel = textlabel.TextLabel(10, 135, "EXP Points")
+        self.experiencePointsField = textfield.TextField(140, 135, 120, 15, "experience_points_field", "line")
 
-        self.strengthScoreLabel = textlabel.TextLabel(350, 10, "Strength")
-        self.strengthScoreField = textfield.TextField(int(self.strengthScoreLabel.x + (self.strengthScoreLabel.getWidth() / 2) - 30 ),
-        35, 60, 60, "strength_score_field", fontSize = 48, alignment = "centered")
-        self.strengthModifierField = textfield.TextField(int(self.strengthScoreLabel.x + (self.strengthScoreLabel.getWidth() / 2) - 30),
-        100, 60, 15, "strength_modifier_field", alignment = "centered")
+        self.strAttr = attrpanel.AttrPanel(295, 10, "strength")
+        self.dexAttr = attrpanel.AttrPanel(395, 10, "dexterity")
+        self.conAttr = attrpanel.AttrPanel(495, 10, "constitution")
+        self.intAttr = attrpanel.AttrPanel(595, 10, "intelligence")
+        self.wisAttr = attrpanel.AttrPanel(695, 10, "wisdom")
+        self.chaAttr = attrpanel.AttrPanel(795, 10, "charisma")
 
-        self.dexterityScoreLabel = textlabel.TextLabel(425, 10, "Dexterity")
-        self.dexterityScoreField = textfield.TextField(int(self.dexterityScoreLabel.x + (self.dexterityScoreLabel.getWidth() / 2) - 30 ), 
-        35, 60, 60, "dexterity_score_field", fontSize = 48, alignment = "centered")
-        self.dexterityModifierField = textfield.TextField(int(self.dexterityScoreLabel.x + (self.dexterityScoreLabel.getWidth() / 2) - 30),
-        100, 60, 15, "dexterity_modifier_field", alignment = "centered")
+        #self.test = infopanel.InfoPanel(1198, 591, "assets/data/spells/horrid_wilting.png", "test")
+        #self.testbutton = button.Button(500, 500, 50, 50, (0, 255, 0), self.test.activate)
 
     def start(self):
         self.load()
@@ -84,14 +85,17 @@ class CharacterSheet():
         self.experiencePointsLabel.draw(self.screen)
         self.experiencePointsField.draw(self.screen)
 
-        self.strengthScoreLabel.draw(self.screen)
-        self.strengthScoreField.draw(self.screen)
-        self.strengthModifierField.draw(self.screen)
+        self.strAttr.draw(self.screen)
+        self.dexAttr.draw(self.screen)
+        self.conAttr.draw(self.screen)
+        self.intAttr.draw(self.screen)
+        self.wisAttr.draw(self.screen)
+        self.chaAttr.draw(self.screen)
 
-        self.dexterityScoreLabel.draw(self.screen)
-        self.dexterityScoreField.draw(self.screen)
-        self.dexterityModifierField.draw(self.screen)
+        #self.testbutton.draw(self.screen)
 
+        # Draw all popups below this
+        #self.test.draw(self.screen)
 
     def update(self):
         self.characterNameField.update(self.events)
@@ -100,12 +104,23 @@ class CharacterSheet():
         self.backgroundField.update(self.events)
         self.alignmentField.update(self.events)
         self.experiencePointsField.update(self.events)
-        self.strengthScoreField.update(self.events)
-        self.strengthModifierField.update(self.events)
-        self.dexterityScoreField.update(self.events)
-        self.dexterityModifierField.update(self.events)
+
+        self.strAttr.update(self.events)
+        self.dexAttr.update(self.events)
+        self.conAttr.update(self.events)
+        self.intAttr.update(self.events)
+        self.wisAttr.update(self.events)
+        self.chaAttr.update(self.events)
+
+        #self.testbutton.update(self.events)
+
+        # Update all popups below this
+        #self.test.update(self.events)
 
         # Update everthing above this
+        if self.debug:
+            print(pygame.mouse.get_pos())
+
         pygame.display.update()
         self.clock.tick(30)
 
@@ -116,10 +131,13 @@ class CharacterSheet():
         self.backgroundField.save()
         self.alignmentField.save()
         self.experiencePointsField.save()
-        self.strengthScoreField.save()
-        self.strengthModifierField.save()
-        self.dexterityScoreField.save()
-        self.dexterityModifierField.save()
+
+        self.strAttr.save()
+        self.dexAttr.save()
+        self.conAttr.save()
+        self.intAttr.save()
+        self.wisAttr.save()
+        self.chaAttr.save()
 
     def load(self):
         self.characterNameField.load()
@@ -128,10 +146,13 @@ class CharacterSheet():
         self.backgroundField.load()
         self.alignmentField.load()
         self.experiencePointsField.load()
-        self.strengthScoreField.load()
-        self.strengthModifierField.load()
-        self.dexterityScoreField.load()
-        self.dexterityModifierField.load()
+
+        self.strAttr.load()
+        self.dexAttr.load()
+        self.conAttr.load()
+        self.intAttr.load()
+        self.wisAttr.load()
+        self.chaAttr.load()
 
 cs = CharacterSheet()
 
