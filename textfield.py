@@ -86,7 +86,7 @@ class TextField():
                     self.text += event.unicode
 
     def getWidth(self):
-        return self.text.get_width()
+        return self.renderedText.get_width()
 
     def save(self):
         pickle.dump(self.text, open(str("assets/data/textfields/" + self.name + "_text.p"), "wb+"))

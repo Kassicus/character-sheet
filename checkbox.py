@@ -38,8 +38,11 @@ class CheckBox():
                         else:
                             self.checked = True
 
-    def saveState(self):
+    def save(self):
         pickle.dump(self.checked, open(str("assets/data/checkboxes/" + self.name + "_state.p"), "wb+"))
 
-    def loadState(self):
-        self.checked = pickle.load(open(str("assets/data/checkboxes/" + self.name + "_state.p"), "rb"))
+    def load(self):
+        try:
+            self.checked = pickle.load(open(str("assets/data/checkboxes/" + self.name + "_state.p"), "rb"))
+        except:
+            pass

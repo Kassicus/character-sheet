@@ -5,6 +5,7 @@ import checkbox
 import infopanel
 import button
 import attrpanel
+import profpanel
 
 pygame.init()
 pygame.font.init()
@@ -45,8 +46,12 @@ class CharacterSheet():
         self.wisAttr = attrpanel.AttrPanel(695, 10, "wisdom")
         self.chaAttr = attrpanel.AttrPanel(795, 10, "charisma")
 
-        #self.test = infopanel.InfoPanel(1198, 591, "assets/data/spells/horrid_wilting.png", "test")
-        #self.testbutton = button.Button(500, 500, 50, 50, (0, 255, 0), self.test.activate)
+        self.strProf = profpanel.ProfPanel(10, 400, "strength")
+        self.dexProf = profpanel.ProfPanel(10, 425, "dexterity")
+
+
+        self.test = infopanel.InfoPanel(1198, 591, "assets/data/spells/horrid_wilting.png", "test")
+        self.testbutton = button.Button(500, 500, 50, 50, (0, 255, 0), self.test.activate)
 
     def start(self):
         self.load()
@@ -92,10 +97,13 @@ class CharacterSheet():
         self.wisAttr.draw(self.screen)
         self.chaAttr.draw(self.screen)
 
-        #self.testbutton.draw(self.screen)
+        self.strProf.draw(self.screen)
+        self.dexProf.draw(self.screen)
+
+        self.testbutton.draw(self.screen)
 
         # Draw all popups below this
-        #self.test.draw(self.screen)
+        self.test.draw(self.screen)
 
     def update(self):
         self.characterNameField.update(self.events)
@@ -112,10 +120,13 @@ class CharacterSheet():
         self.wisAttr.update(self.events)
         self.chaAttr.update(self.events)
 
-        #self.testbutton.update(self.events)
+        self.strProf.update(self.events)
+        self.dexProf.update(self.events)
+
+        self.testbutton.update(self.events)
 
         # Update all popups below this
-        #self.test.update(self.events)
+        self.test.update(self.events)
 
         # Update everthing above this
         if self.debug:
@@ -139,6 +150,8 @@ class CharacterSheet():
         self.wisAttr.save()
         self.chaAttr.save()
 
+        self.strProf.save()
+
     def load(self):
         self.characterNameField.load()
         self.classAndLevelField.load()
@@ -153,6 +166,8 @@ class CharacterSheet():
         self.intAttr.load()
         self.wisAttr.load()
         self.chaAttr.load()
+        
+        self.strProf.load()
 
 cs = CharacterSheet()
 
