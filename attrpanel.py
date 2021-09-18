@@ -6,7 +6,7 @@ class AttrPanel():
     def __init__(self, x, y, attrName):
         """
         The attrpanel (attribute panel) creates the three elements required to create an attribute and handles them as one element
-        attrName: the name of the attribute, ie 'strength'
+        attrName: the name of the attribute, ie 'strength' this must be lowercase
         """
         self.x = x
         self.y = y
