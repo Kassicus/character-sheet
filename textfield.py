@@ -1,4 +1,5 @@
 import pygame
+import pickle
 
 class TextField():
     def __init__(self, x, y, width, height, name, drawType = "box", fontSize = 16):
@@ -81,3 +82,12 @@ class TextField():
 
     def getWidth(self):
         return self.text.get_width()
+
+    def save(self):
+        pickle.dump(self.text, open(str("assets/data/textfields/" + self.name + "_text.p"), "wb+"))
+
+    def load(self):
+        try:
+            self.text = pickle.load(open(str("assets/data/textfields/" + self.name + "_text.p"), "rb"))
+        except:
+            pass

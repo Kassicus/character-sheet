@@ -1,4 +1,5 @@
 import pygame
+import pickle
 
 class CheckBox():
     def __init__(self, x, y, name):
@@ -20,7 +21,7 @@ class CheckBox():
         pygame.draw.rect(surface, (255, 255, 255), (self.x, self.y, self.width, self.height), 1)
 
         if self.checked:
-            pygame.draw.rect(surface, (255, 255, 255), (self.x + 2, self.y + 2, self.width - 4, self.height - 4), 0)
+            pygame.draw.rect(surface, (255, 255, 255), (self.x + 3, self.y + 3, self.width - 6, self.height - 6), 0)
 
     def update(self, events):
         self.checkFocused(events)
@@ -36,3 +37,9 @@ class CheckBox():
                             self.checked = False
                         else:
                             self.checked = True
+
+    def saveState(self):
+        pickle.dump(self.checked, open(str("assets/data/checkboxes/" + self.name + "_state.p"), "wb+"))
+
+    def loadState(self):
+        self.checked = pickle.load(open(str("assets/data/checkboxes/" + self.name + "_state.p"), "rb"))
