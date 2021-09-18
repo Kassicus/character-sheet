@@ -1,10 +1,10 @@
 import pygame
-import textfield
-import textlabel
 import infopanel
 import button
-import attrpanel
-import profpanel
+import characterinfo
+import characterattr
+import characterprof
+import characterskill
 
 pygame.init()
 pygame.font.init()
@@ -20,35 +20,10 @@ class CharacterSheet():
 
         self.debug = False
 
-        self.characterNameLabel = textlabel.TextLabel(10, 10, "Character Name")
-        self.characterNameField = textfield.TextField(140, 10, 120, 15, "character_name_field", "line")
-
-        self.classAndLevelLabel = textlabel.TextLabel(10, 35, "Class & Level")
-        self.classAndLevelField = textfield.TextField(140, 35, 120, 15, "class_and_level_field", "line")
-
-        self.raceLabel = textlabel.TextLabel(10, 60, "Race")
-        self.raceField = textfield.TextField(140, 60, 120, 15, "character_race_field", "line")
-
-        self.backgroundLabel = textlabel.TextLabel(10, 85, "Background")
-        self.backgroundField = textfield.TextField(140, 85, 120, 15, "character_background_field", "line")
-
-        self.alignmentLabel = textlabel.TextLabel(10, 110, "Alignment")
-        self.alignmentField = textfield.TextField(140, 110, 120, 15, "alignment_field", "line")
-
-        self.experiencePointsLabel = textlabel.TextLabel(10, 135, "EXP Points")
-        self.experiencePointsField = textfield.TextField(140, 135, 120, 15, "experience_points_field", "line")
-
-        self.strAttr = attrpanel.AttrPanel(295, 10, "strength")
-        self.dexAttr = attrpanel.AttrPanel(395, 10, "dexterity")
-        self.conAttr = attrpanel.AttrPanel(495, 10, "constitution")
-        self.intAttr = attrpanel.AttrPanel(595, 10, "intelligence")
-        self.wisAttr = attrpanel.AttrPanel(695, 10, "wisdom")
-        self.chaAttr = attrpanel.AttrPanel(795, 10, "charisma")
-
-        self.strProf = profpanel.ProfPanel(10, 400, "strength")
-        self.dexProf = profpanel.ProfPanel(10, 425, "dexterity")
-        self.conProf = profpanel.ProfPanel(10, 450, "constitution")
-
+        self.characterInformation = characterinfo.CharacterInfo()
+        self.characterAttributs = characterattr.CharacterAttr()
+        self.characterProficiencies = characterprof.CharacterProf()
+        self.characterSkills = characterskill.CharacterSkill()
 
         self.test = infopanel.InfoPanel(1198, 591, "assets/data/spells/horrid_wilting.png", "test")
         self.testbutton = button.Button(500, 500, 50, 50, (0, 255, 0), self.test.activate)
@@ -72,34 +47,10 @@ class CharacterSheet():
         self.screen.fill((0, 0, 0))
 
         # Draw everything below this
-        self.characterNameLabel.draw(self.screen)
-        self.characterNameField.draw(self.screen)
-
-        self.classAndLevelLabel.draw(self.screen)
-        self.classAndLevelField.draw(self.screen)
-
-        self.raceLabel.draw(self.screen)
-        self.raceField.draw(self.screen)
-
-        self.backgroundLabel.draw(self.screen)
-        self.backgroundField.draw(self.screen)
-
-        self.alignmentLabel.draw(self.screen)
-        self.alignmentField.draw(self.screen)
-
-        self.experiencePointsLabel.draw(self.screen)
-        self.experiencePointsField.draw(self.screen)
-
-        self.strAttr.draw(self.screen)
-        self.dexAttr.draw(self.screen)
-        self.conAttr.draw(self.screen)
-        self.intAttr.draw(self.screen)
-        self.wisAttr.draw(self.screen)
-        self.chaAttr.draw(self.screen)
-
-        self.strProf.draw(self.screen)
-        self.dexProf.draw(self.screen)
-        self.conProf.draw(self.screen)
+        self.characterInformation.draw(self.screen)
+        self.characterAttributs.draw(self.screen)
+        self.characterProficiencies.draw(self.screen)
+        self.characterSkills.draw(self.screen)
 
         self.testbutton.draw(self.screen)
 
@@ -107,23 +58,10 @@ class CharacterSheet():
         self.test.draw(self.screen)
 
     def update(self):
-        self.characterNameField.update(self.events)
-        self.classAndLevelField.update(self.events)
-        self.raceField.update(self.events)
-        self.backgroundField.update(self.events)
-        self.alignmentField.update(self.events)
-        self.experiencePointsField.update(self.events)
-
-        self.strAttr.update(self.events)
-        self.dexAttr.update(self.events)
-        self.conAttr.update(self.events)
-        self.intAttr.update(self.events)
-        self.wisAttr.update(self.events)
-        self.chaAttr.update(self.events)
-
-        self.strProf.update(self.events)
-        self.dexProf.update(self.events)
-        self.conProf.update(self.events)
+        self.characterInformation.update(self.events)
+        self.characterAttributs.update(self.events)
+        self.characterProficiencies.update(self.events)
+        self.characterSkills.update(self.events)
 
         self.testbutton.update(self.events)
 
@@ -138,42 +76,16 @@ class CharacterSheet():
         self.clock.tick(30)
 
     def save(self):
-        self.characterNameField.save()
-        self.classAndLevelField.save()
-        self.raceField.save()
-        self.backgroundField.save()
-        self.alignmentField.save()
-        self.experiencePointsField.save()
-
-        self.strAttr.save()
-        self.dexAttr.save()
-        self.conAttr.save()
-        self.intAttr.save()
-        self.wisAttr.save()
-        self.chaAttr.save()
-
-        self.strProf.save()
-        self.dexProf.save()
-        self.conProf.save()
+        self.characterInformation.save()
+        self.characterAttributs.save()
+        self.characterProficiencies.save()
+        self.characterSkills.save()
 
     def load(self):
-        self.characterNameField.load()
-        self.classAndLevelField.load()
-        self.raceField.load()
-        self.backgroundField.load()
-        self.alignmentField.load()
-        self.experiencePointsField.load()
-
-        self.strAttr.load()
-        self.dexAttr.load()
-        self.conAttr.load()
-        self.intAttr.load()
-        self.wisAttr.load()
-        self.chaAttr.load()
-        
-        self.strProf.load()
-        self.dexProf.load()
-        self.conProf.load()
+        self.characterInformation.load()
+        self.characterAttributs.load()
+        self.characterProficiencies.load()
+        self.characterSkills.load()
 
 cs = CharacterSheet()
 
