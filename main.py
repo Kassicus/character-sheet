@@ -6,6 +6,7 @@ import characterattr
 import characterprof
 import characterskill
 import characterhealth
+import toolbar
 
 pygame.init()
 pygame.font.init()
@@ -26,6 +27,8 @@ class CharacterSheet():
         self.characterProficiencies = characterprof.CharacterProf()
         self.characterSkills = characterskill.CharacterSkill()
         self.characterHealth = characterhealth.CharacterHealth()
+
+        self.toolbar = toolbar.Toolbar()
 
         #self.test = infopanel.InfoPanel(1198, 591, "assets/data/spells/horrid_wilting.png", "test")
         #self.testbutton = button.Button(500, 500, 50, 50, (0, 255, 0), self.test.activate)
@@ -55,6 +58,8 @@ class CharacterSheet():
         self.characterSkills.draw(self.screen)
         self.characterHealth.draw(self.screen)
 
+        self.toolbar.draw(self.screen)
+
         #self.testbutton.draw(self.screen)
 
         # Draw all popups below this
@@ -66,6 +71,8 @@ class CharacterSheet():
         self.characterProficiencies.update(self.events)
         self.characterSkills.update(self.events)
         self.characterHealth.update(self.events)
+
+        self.toolbar.update(self.events)
 
         #self.testbutton.update(self.events)
 

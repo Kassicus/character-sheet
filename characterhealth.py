@@ -1,6 +1,7 @@
 import pygame
 import textlabel
 import textfield
+import checkbox
 
 class CharacterHealth():
     def __init__(self):
@@ -30,6 +31,16 @@ class CharacterHealth():
         self.tempHitPointLabel = textlabel.TextLabel(self.x, self.y + 220, "Temporary Hit Points")
         self.tempHitPointLabel.x = int((self.x + 103) - ((self.tempHitPointLabel.getWidth() / 2) + 3))
 
+        self.successCountLabel = textlabel.TextLabel(self.x + 5, self.y + 250, "Successes")
+        self.successBox1 = checkbox.CheckBox(self.x + self.successCountLabel.getWidth() + 20, self.y + 250, "death_saving_success_one")
+        self.successBox2 = checkbox.CheckBox(self.x + self.successCountLabel.getWidth() + 55, self.y + 250, "death_saving_success_two")
+        self.successBox3 = checkbox.CheckBox(self.x + self.successCountLabel.getWidth() + 90, self.y + 250, "death_saving_success_three")
+        
+        self.failureCountLabel = textlabel.TextLabel(self.x + 5, self.y + 285, "Failures")
+        self.failureBox1 = checkbox.CheckBox(self.x + self.successCountLabel.getWidth() + 20, self.y + 285, "death_saving_failure_one")
+        self.failureBox2 = checkbox.CheckBox(self.x + self.successCountLabel.getWidth() + 55, self.y + 285, "death_saving_failure_two")
+        self.failureBox3 = checkbox.CheckBox(self.x + self.successCountLabel.getWidth() + 90, self.y + 285, "death_saving_failure_three")
+
     def draw(self, surface):
         self.armorClassLabel.draw(surface)
         self.armorClassField.draw(surface)
@@ -49,7 +60,17 @@ class CharacterHealth():
         self.tempHitPointLabel.draw(surface)
         self.tempHitPointField.draw(surface)
 
-        pygame.draw.rect(surface, (63, 58, 114), (self.x - 2, self.y + 50, 206, 200), 1)
+        self.successCountLabel.draw(surface)
+        self.successBox1.draw(surface)
+        self.successBox2.draw(surface)
+        self.successBox3.draw(surface)
+
+        self.failureCountLabel.draw(surface)
+        self.failureBox1.draw(surface)
+        self.failureBox2.draw(surface)
+        self.failureBox3.draw(surface)
+
+        pygame.draw.rect(surface, (63, 58, 114), (self.x - 2, self.y + 50, 206, 275), 1)
 
     def update(self, events):
         self.armorClassField.update(events)
@@ -59,6 +80,14 @@ class CharacterHealth():
         self.currentHitPointField.update(events)
         self.tempHitPointField.update(events)
 
+        self.successBox1.update(events)
+        self.successBox2.update(events)
+        self.successBox3.update(events)
+
+        self.failureBox1.update(events)
+        self.failureBox2.update(events)
+        self.failureBox3.update(events)
+
     def save(self):
         self.armorClassField.save()
         self.initiativeField.save()
@@ -67,6 +96,14 @@ class CharacterHealth():
         self.currentHitPointField.save()
         self.tempHitPointField.save()
 
+        self.successBox1.save()
+        self.successBox2.save()
+        self.successBox3.save()
+
+        self.failureBox1.save()
+        self.failureBox2.save()
+        self.failureBox3.save()
+
     def load(self):
         self.armorClassField.load()
         self.initiativeField.load()
@@ -74,3 +111,11 @@ class CharacterHealth():
         self.maxHitPointField.load()
         self.currentHitPointField.load()
         self.tempHitPointField.load()
+
+        self.successBox1.load()
+        self.successBox2.load()
+        self.successBox3.load()
+
+        self.failureBox1.load()
+        self.failureBox2.load()
+        self.failureBox3.load()
