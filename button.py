@@ -21,7 +21,7 @@ class Button():
         self.drawText = False
 
         self.font = pygame.font.Font('assets/fonts/ubuntu/Ubuntu-Regular.ttf', fontSize)
-        self.value = value
+        self.value = str(value)
         self.renderedValue = self.font.render(self.value, True, (150, 140, 235))
 
         self.app = app

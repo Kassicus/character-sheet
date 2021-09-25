@@ -30,9 +30,6 @@ class CharacterSheet():
 
         self.toolbar = toolbar.Toolbar()
 
-        #self.test = infopanel.InfoPanel(1198, 591, "assets/data/spells/horrid_wilting.png", "test")
-        #self.testbutton = button.Button(500, 500, 50, 50, (0, 255, 0), self.test.activate)
-
     def start(self):
         self.load()
 
@@ -60,10 +57,7 @@ class CharacterSheet():
 
         self.toolbar.draw(self.screen)
 
-        #self.testbutton.draw(self.screen)
-
         # Draw all popups below this
-        #self.test.draw(self.screen)
 
     def update(self):
         self.characterInformation.update(self.events)
@@ -74,10 +68,7 @@ class CharacterSheet():
 
         self.toolbar.update(self.events)
 
-        #self.testbutton.update(self.events)
-
         # Update all popups below this
-        #self.test.update(self.events)
 
         # Update everthing above this
         if self.debug:
