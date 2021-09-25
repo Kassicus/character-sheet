@@ -12,13 +12,17 @@ class DiceRoller():
 
         self.isDrawn = False
 
+        self.closeButton = button.Button(self.x + self.width - 30, self.y + 10, 20, 20, self.deactivate, app = "close")
+
     def draw(self, surface):
         if self.isDrawn:
             pygame.draw.rect(surface, (34, 32, 52), (self.x, self.y, self.width, self.height), 0)
-            pygame.draw.rect(surface, (63, 58, 114), (self.x, self.y, self.width, self.height), 5)
+            pygame.draw.rect(surface, (63, 58, 114), (self.x, self.y, self.width, self.height), 5, 5)
+
+            self.closeButton.draw(surface)
 
     def update(self, events):
-        pass
+        self.closeButton.update(events)
 
     def deactivate(self):
         self.isDrawn = False
