@@ -1,5 +1,4 @@
 import textlabel
-import mltextfield
 
 class CharacterDescription():
     def __init__(self):
@@ -10,6 +9,3 @@ class CharacterDescription():
 
     def draw(self, surface):
         self.personalityTraitLabel.draw(surface)
-
-    def update(self, events):
-        pass

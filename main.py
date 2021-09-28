@@ -6,6 +6,7 @@ import characterattr
 import characterprof
 import characterskill
 import characterhealth
+import characterdescription
 import toolbar
 
 pygame.init()
@@ -20,6 +21,8 @@ class CharacterSheet():
         self.clock = pygame.time.Clock()
         self.events = pygame.event.get()
 
+        self.backgroundImage = pygame.image.load("assets/gui/background.png")
+
         self.debug = False
 
         self.characterInformation = characterinfo.CharacterInfo()
@@ -27,6 +30,7 @@ class CharacterSheet():
         self.characterProficiencies = characterprof.CharacterProf()
         self.characterSkills = characterskill.CharacterSkill()
         self.characterHealth = characterhealth.CharacterHealth()
+        self.characterDescription = characterdescription.CharacterDescription()
 
         self.toolbar = toolbar.Toolbar()
 
@@ -54,6 +58,7 @@ class CharacterSheet():
         self.characterProficiencies.draw(self.screen)
         self.characterSkills.draw(self.screen)
         self.characterHealth.draw(self.screen)
+        self.characterDescription.draw(self.screen)
 
         self.toolbar.draw(self.screen)
 
